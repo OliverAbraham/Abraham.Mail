@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Receive and send emails easily using POP3, SMTP and IMAP</Title>
+    <Description>Receive and send emails easily using POP3, SMTP and IMAP</Description>
+    <Copyright>Oliver Abraham</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.4.1" />
+  </ItemGroup>
+
+</Project>
