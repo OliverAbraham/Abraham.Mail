@@ -13,6 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pop3Demo", "Pop3Demo\Pop3De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmtpDemo", "SmtpDemo\SmtpDemo.csproj", "{D4A309D5-5DF1-46FB-B76E-707E74C61007}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{351A0CEB-DA8F-49BB-A78F-545344640D43}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPackage", "NugetPackage", "{65A11605-152A-42EB-831A-561A9448A728}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{CDEB836A-B769-48F5-B1BC-A101168F6CB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +52,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4212D401-21EA-44DC-AACC-D9A8CFFD9F4F} = {65A11605-152A-42EB-831A-561A9448A728}
+		{F8920A64-E6C7-448D-AB20-EEC3EEDD6441} = {CDEB836A-B769-48F5-B1BC-A101168F6CB6}
+		{094673E2-B9C7-4360-8E10-19B6E12FDACA} = {CDEB836A-B769-48F5-B1BC-A101168F6CB6}
+		{BA67E98D-CD62-4FBB-8F3E-8B0B0085A312} = {CDEB836A-B769-48F5-B1BC-A101168F6CB6}
+		{D4A309D5-5DF1-46FB-B76E-707E74C61007} = {CDEB836A-B769-48F5-B1BC-A101168F6CB6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F84AF3B-8ABC-4D90-BB2D-C317F57D13C0}

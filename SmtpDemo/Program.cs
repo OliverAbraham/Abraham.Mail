@@ -14,9 +14,9 @@ namespace SmtpDemo
 				.UseAuthentication("ENTER YOUR USERNAME HERE", "ENTER YOUR PASSWORD HERE")
 				.Open();
 
-			var from		    = "mail@oliver-abraham.de";
-			var to			    = "mail@oliver-abraham.de";
-			var subject         = "Test-Email";
+			var from		    = "ENTER YOUR EMAIL ADDRESS HERE";
+			var to			    = "ENTER YOUR EMAIL ADDRESS HERE";
+			var subject         = "Test-Email nuget package";
 			var body            = "Test-Email body";
 
 			_client.SendEmail(from, to, subject, body);

@@ -8,7 +8,28 @@
     <Title>Receive and send emails easily using POP3, SMTP and IMAP</Title>
     <Description>Receive and send emails easily using POP3, SMTP and IMAP</Description>
     <Copyright>Oliver Abraham</Copyright>
+    <PackageProjectUrl>https://github.com/OliverAbraham/Abraham.Mail</PackageProjectUrl>
+    <PackageIcon>Ciridata.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/OliverAbraham/Abraham.Mail</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Ciridata.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="3.4.1" />
