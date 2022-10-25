@@ -147,5 +147,26 @@ public class ImapClient
 		source.MoveTo(message.UID, destination);
 		source.Close();
 	}
+
+	public void CopyEmailToFolder(Message message, IMailFolder source, IMailFolder destination)
+	{
+		source.Open(FolderAccess.ReadWrite);
+		source.CopyTo(message.UID, destination);
+		source.Close();
+	}
+
+	public void MarkAsRead(Message message, IMailFolder folder)
+	{
+		folder.Open(FolderAccess.ReadWrite);
+		folder.AddFlags(message.UID, MessageFlags.Seen, true);
+		folder.Close();
+	}
+
+	public void MarkAsUnread(Message message, IMailFolder folder)
+	{
+		folder.Open(FolderAccess.ReadWrite);
+		folder.RemoveFlags(message.UID, MessageFlags.Seen, true);
+		folder.Close();
+	}
 	#endregion
 }
