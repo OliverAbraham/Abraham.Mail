@@ -1,5 +1,9 @@
 # Abraham.Mail
 
+![](https://img.shields.io/github/downloads/oliverabraham/Abraham.Mail/total) ![](https://img.shields.io/github/license/oliverabraham/Abraham.Mail) ![](https://img.shields.io/github/languages/count/oliverabraham/Abraham.Mail) ![GitHub Repo stars](https://img.shields.io/github/stars/oliverabraham/Abraham.Mail?label=repo%20stars) ![GitHub Repo stars](https://img.shields.io/github/stars/oliverabraham?label=user%20stars)
+
+
+
 ## OVERVIEW
 
 Receive and send emails easily using the POP3, SMTP and IMAP protocols.
@@ -91,3 +95,17 @@ https://github.com/OliverAbraham/Abraham.Mail
 The Nuget Package is hosted at: 
 
 https://www.nuget.org/packages/Abraham.Mail
+
+
+
+## SCREENSHOTS
+
+POP3 client demo reading the inbox:
+![](Screenshots/screenshot1.jpg)
+
+
+# MAKE A DONATION !
+If you find this application useful, buy me a coffee!
+I would appreciate a small donation on https://www.buymeacoffee.com/oliverabraham
+
+<a href="https://www.buymeacoffee.com/app/oliverabraham" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>

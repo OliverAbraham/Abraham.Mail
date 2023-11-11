@@ -11,6 +11,7 @@ namespace Pop3Demo
 			var _client = new Abraham.Mail.Pop3Client()
 				.UseHostname("ENTER YOUR POP3 SERVER NAME HERE")
 				.UseSecurityProtocol(Security.Ssl)
+				.UsePort(995)
 				.UseAuthentication("ENTER YOUR USERNAME HERE", "ENTER YOUR PASSWORD HERE")
 				.Open();
 

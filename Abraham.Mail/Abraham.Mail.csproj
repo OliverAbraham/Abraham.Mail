@@ -14,8 +14,16 @@
     <RepositoryUrl>https://github.com/OliverAbraham/Abraham.Mail</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
+	<ApplicationIcon>Ciridata.ico</ApplicationIcon>
+	  <IncludeSymbols>True</IncludeSymbols>
+	  <!-- Include symbol files (*.pdb) in the built .nupkg -->
+	  <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	<Version>1.0.2</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Ciridata.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\Ciridata.png">
