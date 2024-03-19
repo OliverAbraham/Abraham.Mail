@@ -114,6 +114,17 @@ public class SmtpClient
 		SendEmail(message);
 	}
 
+	public MimePart CreateFileAttachment(string filename)
+    {
+		return new MimePart()
+        {
+            ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+            ContentTransferEncoding = ContentEncoding.Binary,
+            FileName = filename,
+			Content = new MimeContent(File.OpenRead(filename), ContentEncoding.Default)
+        };
+	}
+
 	public void SendEmail(MimeMessage message)
     {
 		_client.Send(message);

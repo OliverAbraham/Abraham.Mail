@@ -1,4 +1,5 @@
 ﻿using Abraham.Mail;
+using MimeKit;
 
 namespace SmtpDemo
 {
@@ -20,6 +21,18 @@ namespace SmtpDemo
 			var body            = "Test-Email body";
 
 			_client.SendEmail(from, to, subject, body);
+			Console.WriteLine("done");
+
+
+
+			// sending an email with attachments
+			File.WriteAllText("myFile1.txt", "first attachment!");
+			File.WriteAllText("myFile2.txt", "second attachment!");
+
+			var attachments = new List<MimeEntity>();
+			attachments.Add(_client.CreateFileAttachment("myFile1.txt"));
+			attachments.Add(_client.CreateFileAttachment("myFile2.txt"));
+			_client.SendEmail(from, to, subject, body, attachments);
 			Console.WriteLine("done");
 		}
 	}
