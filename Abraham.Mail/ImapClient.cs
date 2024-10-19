@@ -26,6 +26,7 @@ public class ImapClient
     public Security	SecurityProtocol { get; set; } = Security.Ssl;
     public string	Username         { get; set; }
     public string	Password         { get; set; }
+	public Action<string> Logger     { get; set; }
 	#endregion
 
 
@@ -69,6 +70,12 @@ public class ImapClient
 		Password = password;
 		return this;
 	}
+
+	public ImapClient UseLogger(Action<string> logger)
+	{
+		Logger = logger;
+		return this;
+	}
 	
 	public ImapClient RegisterCodepageProvider()
 	{
@@ -98,6 +105,66 @@ public class ImapClient
 		_client.Disconnect (true);
 		return this;
 	}
+
+    public List<Message> ReadAllEmailsFromInbox()
+    {
+        return ReadEmailsFromFolder("inbox", unreadOnly: false);
+    }
+
+    public List<Message> ReadUnreadEmailsFromInbox()
+    {
+        return ReadEmailsFromFolder("inbox", unreadOnly: true);
+    }
+
+    public List<Message> ReadEmailsFromFolder(string folderName, bool unreadOnly = false)
+    {
+        List<IMailFolder> folders = null;
+        try
+        {
+            folders = GetAllFolders()?.ToList();
+            if (folders is null)
+                throw new Exception();
+        }
+        catch (Exception ex) 
+        {
+            Logger($"Error opening the connection to postbox {Hostname}. More Info: {ex}");
+            throw;
+        }
+
+        IMailFolder folderToReadFrom = null;
+        try
+        {
+            folderToReadFrom = GetFolderByName(folders, folderName);
+            if (folderToReadFrom is null)
+                throw new Exception();
+        }
+        catch (Exception)
+        {
+            var allImapFolders = string.Join(',', folders.Select(x => x.Name));
+            Logger($"Error getting the folder named '{folderName}' from your imap server. Existing folders are: {allImapFolders}");
+            throw;
+        }
+
+        Logger($"Checking email account {Hostname}");
+
+        try
+        {
+            var emails = unreadOnly
+                ? GetUnreadMessagesFromFolder(folderToReadFrom).ToList()
+                : GetAllMessagesFromFolder(folderToReadFrom).ToList();
+            return emails;
+        }
+        catch (Exception ex)
+        {
+            Logger($"Emails cannot be read for postbox {Hostname}. More info: {ex}");
+            throw;
+        }
+        finally
+        {
+            if (_client is not null)
+                Close();
+        }
+    }
 
 	public IMailFolder GetFolderByName(string name, bool caseInsensitive = true)
 	{
