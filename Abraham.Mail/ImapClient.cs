@@ -117,7 +117,7 @@ public class ImapClient
         return ReadEmailsFromFolder("inbox", unreadOnly: true);
     }
 
-    public List<Message> ReadEmailsFromFolder(string folderName, bool unreadOnly = false)
+    public List<Message> ReadEmailsFromFolder(string folderName, bool unreadOnly = false, bool closeConnectionAfterwards = true)
     {
         List<IMailFolder> folders = null;
         try
@@ -162,7 +162,7 @@ public class ImapClient
         }
         finally
         {
-            if (_client is not null)
+            if (_client is not null && closeConnectionAfterwards)
                 Close();
         }
     }
