@@ -1,4 +1,5 @@
 ﻿using MailKit;
+using MailKit.Net.Imap;
 using MailKit.Search;
 using MailKit.Security;
 
@@ -26,7 +27,7 @@ public class ImapClient
     public Security	SecurityProtocol { get; set; } = Security.Ssl;
     public string	Username         { get; set; }
     public string	Password         { get; set; }
-	public Action<string> Logger     { get; set; }
+	public Action<string> Logger     { get; set; } = delegate(string message) { };
 	#endregion
 
 
@@ -134,7 +135,7 @@ public class ImapClient
         IMailFolder folderToReadFrom = null;
         try
         {
-            folderToReadFrom = GetFolderByName(folders, folderName);
+            folderToReadFrom = GetFolderByName(folders, folderName, caseInsensitive: true);
             if (folderToReadFrom is null)
                 throw new Exception();
         }
@@ -234,6 +235,25 @@ public class ImapClient
 		folder.Open(FolderAccess.ReadWrite);
 		folder.RemoveFlags(message.UID, MessageFlags.Seen, true);
 		folder.Close();
+	}
+
+	public IMailFolder CreateFolder(string displayName)
+	{
+		var toplevel = _client.GetFolder(_client.PersonalNamespaces[0]);
+        var newFolder = toplevel.Create(displayName, true);
+        return newFolder;
+	}
+
+	public void DeleteFolder(string folderName)
+	{
+		var folder = GetFolderByName(folderName);
+		if (folder is not null)
+			folder.Delete();
+	}
+
+	public void DeleteFolder(ImapFolder folder)
+	{
+		folder.Delete();
 	}
 	#endregion
 }
