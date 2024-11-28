@@ -19,7 +19,7 @@ namespace Abraham.Mail;
 /// 
 /// </summary>
 /// 
-public class ImapClient
+public class ImapClient : IImapClient
 {
 	#region ------------- Properties ----------------------------------------------------------
 	public string	Hostname         { get; set; }
@@ -47,44 +47,44 @@ public class ImapClient
 
 
 	#region ------------- Methods -------------------------------------------------------------
-	public ImapClient UseHostname(string hostname)
+	public IImapClient UseHostname(string hostname)
 	{
 		Hostname = hostname;
 		return this;
 	}
 
-	public ImapClient UsePort(int port)
+	public IImapClient UsePort(int port)
 	{
 		Port = port;
 		return this;
 	}
 
-	public ImapClient UseSecurityProtocol(Security securityProtocol)
+	public IImapClient UseSecurityProtocol(Security securityProtocol)
 	{
 		SecurityProtocol = securityProtocol;
 		return this;
 	}
 
-	public ImapClient UseAuthentication(string username, string password)
+	public IImapClient UseAuthentication(string username, string password)
 	{
 		Username = username;
 		Password = password;
 		return this;
 	}
 
-	public ImapClient UseLogger(Action<string> logger)
+	public IImapClient UseLogger(Action<string> logger)
 	{
 		Logger = logger;
 		return this;
 	}
 	
-	public ImapClient RegisterCodepageProvider()
+	public IImapClient RegisterCodepageProvider()
 	{
         System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 		return this;
 	}
 
-	public ImapClient Open()
+	public IImapClient Open()
 	{
         _client = new MailKit.Net.Imap.ImapClient();
 
@@ -101,7 +101,7 @@ public class ImapClient
 		return this;
 	}
 
-	public ImapClient Close()
+	public IImapClient Close()
 	{
 		_client.Disconnect (true);
 		return this;
